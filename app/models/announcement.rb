@@ -2,8 +2,6 @@ class Announcement < ActiveRecord::Base
   serialize :roles, Array
   serialize :types, Array
   
-  attr_accessible :message, :starts_at, :ends_at, :active, :roles, :style
-
   has_many :hidden_announcements, :dependent => :destroy
   
   validates_presence_of :message

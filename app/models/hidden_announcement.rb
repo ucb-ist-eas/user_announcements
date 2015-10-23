@@ -1,6 +1,4 @@
 class HiddenAnnouncement < ActiveRecord::Base
-  attr_accessible :user_id, :announcement_id
-  
   validates_presence_of :user_id, :announcement_id
   
   class << self
@@ -21,7 +19,7 @@ class HiddenAnnouncement < ActiveRecord::Base
     private
     
     def record_exists_for?(user_id, announcement_id)
-      where(user_id: user_id, announcement_id: announcement_id).count > 0
+      where(user_id: user_id, announcement_id: announcement_id).any?
     end
   end
   

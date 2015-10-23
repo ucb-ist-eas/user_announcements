@@ -7,21 +7,21 @@ describe AnnouncementFinder do
   end
   
   describe '.user_can_see' do
-    let(:user) { mock('user') }
+    let(:user) { double('user') }
     
     it "true if no roles" do
-      user_can_see(user, []).should be_true
+      user_can_see(user, []).should be_truthy
     end
     
     it "true if blank role" do
-      user_can_see(user, ['']).should be_true
-      user_can_see(user, [nil]).should be_true
+      user_can_see(user, ['']).should be_truthy
+      user_can_see(user, [nil]).should be_truthy
     end
     
     it "true if user has role" do
       user.should_receive(:has_role?).with('a').and_return(false)
       user.should_receive(:has_role?).with('b').and_return(true)
-      user_can_see(user, ['a', 'b']).should be_true
+      user_can_see(user, ['a', 'b']).should be_truthy
     end
   end
   
