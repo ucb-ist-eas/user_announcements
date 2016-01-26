@@ -4,9 +4,10 @@ module UserAnnouncements
 
     config.generators.integration_tool :rspec
     config.generators.test_framework :rspec
-    
+
+    config.bootstrap = true
   end
-  
+
   def self.config(&block)
     yield Engine.config if block
     Engine.config

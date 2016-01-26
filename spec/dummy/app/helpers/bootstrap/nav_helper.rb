@@ -35,7 +35,7 @@ module Bootstrap::NavHelper
   # @return [String]
   def nav_bar()
     content_tag(:header, class: 'navbar') do
-      content_tag(:nav, class: 'navbar-inner') do
+      content_tag(:nav, class: 'container') do
         yield
       end
     end
@@ -49,7 +49,7 @@ module Bootstrap::NavHelper
   # @return [String] <a> if +:url+ option present, else <span>
   def brand(text, options = {})
     options = canonicalize_options(options)
-    options = ensure_class(options, 'brand')
+    options = ensure_class(options, 'nav-brand')
     url = options.delete(:url)
     
     if url.present?
