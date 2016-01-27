@@ -9,24 +9,14 @@ module UserAnnouncements
 
       desc %(Copy user_announcements files.
 * assumes Bootstrap by default
-* if you are not using Bootstrap or have your own copy of the Bootstrap datetimepicker assets, see:
+* if you are not using Bootstrap, see:
   * --no_bootstrap
-  * --no_bootstrap_dtp
+
 
 )
  
-      class_option :no_bootstrap, aliases: '-n', type: :boolean, desc: 'Do not configure for Bootstrap; do not copy Bootstrap datetimepicker assets'
-      class_option :no_bootstrap_dtp, aliases: '-d', type: :boolean, desc: 'Do not copy Bootstrap datetimepicker assets'
+      class_option :no_bootstrap, aliases: '-n', type: :boolean, desc: 'Do not configure for Bootstrap'
       class_option :readme, aliases: '-r', type: :boolean, desc: 'Display README and exit'
-  
-      def copy_bootstrap_datetime_picker_assets
-        return if options.readme?
-        
-        unless options.no_bootstrap? || options.no_bootstrap_dtp?
-          copy_file 'app/assets/javascripts/user_announcements/bootstrap-datetimepicker.min.js'
-          copy_file 'app/assets/stylesheets/user_announcements/bootstrap-datetimepicker.min.css'
-        end
-      end
 
       def self.next_migration_number(path)
         unless @prev_migration_nr

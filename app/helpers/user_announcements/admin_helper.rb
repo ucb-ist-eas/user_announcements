@@ -41,14 +41,15 @@ module UserAnnouncements::AdminHelper
   
   def ua_datetime_p_bootstrap(f, method)
     value = f.object.send(method).try(:strftime, "%Y-%m-%d %H:%M")
-    %(<p class="input-append date ua-datetimepicker" style: "display:block !important">
-      #{f.label(method)}
-      #{f.text_field(method, value: value, data: {format: "yyyy-MM-dd hh:mm"})}
-      <span class="add-on">
-        <i data-time-icon="icon-time" data-date-icon="icon-calendar">
-        </i>
-      </span>
-    </p>).html_safe
+    %(<div class="date" style: "display:block !important">
+        #{f.label(method, class: "control-label")}
+        <div class="input-group date">
+          #{f.text_field(method, value: value, class: 'form-control')}
+          <span class="input-group-addon">
+            <i class="glyphicon glyphicon-th"></i>
+          </span>
+        </div>
+    </div>).html_safe
   end
 
   def ua_datetime_p_non_bootstrap(f, method)

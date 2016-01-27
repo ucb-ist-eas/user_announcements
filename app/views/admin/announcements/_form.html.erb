@@ -2,14 +2,16 @@
   <%= _ua_active_model_errors(f.object) %>
 
   <p>
-    <%= f.check_box(:active) %>
-    <%= f.label :active %>
+    <%= f.label :active, class: "checkbox-inline" do %>
+      <%= f.check_box(:active) %>
+      Active
+    <% end %>
   </p>
 
   <p>
     <%= f.label(:message) %>
     <%= ua_br %>
-    <%= f.text_area :message, size: "60x10", class: 'span6' %>
+    <%= f.text_area :message, size: "60x10", class: 'form-control' %>
   </p>
 
   <%= ua_datetime_p(f, :starts_at) %>
@@ -31,12 +33,3 @@
   
 <% end %>
 
-<%- if ua_bootstrap_datetime_picker? %>
-<script>
-  
-  $(function() {
-    $('.ua-datetimepicker').datetimepicker({
-    });
-  })
-</script>
-<% end %>

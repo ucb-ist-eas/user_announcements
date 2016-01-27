@@ -6,7 +6,7 @@ module UserAnnouncements::StyleHelper
 
     f.label(:style) +
     ua_br + 
-    f.select(:style, _ua_styles)
+    f.select(:style, _ua_styles, {}, class: "form-control")
   end
   
   private

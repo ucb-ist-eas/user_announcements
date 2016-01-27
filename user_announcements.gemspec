@@ -18,7 +18,9 @@ Gem::Specification.new do |s|
   
   s.add_dependency "rails"
   s.add_dependency "jquery-rails"
-  
+  s.add_dependency 'momentjs-rails', '>= 2.9.0'
+  s.add_dependency 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
+
   s.add_development_dependency 'sass-rails', '~> 5.0.4'
   s.add_development_dependency 'bootstrap-sass', '~> 3.3.5'
   s.add_development_dependency "rspec-rails"
