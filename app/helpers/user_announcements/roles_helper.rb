@@ -5,7 +5,7 @@ module UserAnnouncements::RolesHelper
   def ua_roles_html(f)
     return unless _ua_roles.present?
 
-    f.label(:roles) +
+    f.label(:roles, class: 'control-label') +
     ua_br + 
     _ua_roles_checkboxes(_ua_roles)
   end

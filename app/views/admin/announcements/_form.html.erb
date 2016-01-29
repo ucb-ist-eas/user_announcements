@@ -2,14 +2,14 @@
   <%= _ua_active_model_errors(f.object) %>
 
   <p>
-    <%= f.label :active, class: "checkbox-inline" do %>
+    <%= f.label :active, class: "control-label checkbox-inline" do %>
       <%= f.check_box(:active) %>
       Active
     <% end %>
   </p>
 
   <p>
-    <%= f.label(:message) %>
+    <%= f.label(:message, class: 'control-label') %>
     <%= ua_br %>
     <%= f.text_area :message, size: "60x10", class: 'form-control' %>
   </p>
