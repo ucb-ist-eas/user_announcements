@@ -30,7 +30,6 @@ module UserAnnouncements
       def install_base_files
         return if options.readme?
         
-        copy_file 'app/assets/stylesheets/user_announcements/user_announcements.css.scss'
         template  'config/initializers/user_announcements.rb'
         migration_template "migration.rb", "db/migrate/create_user_announcement_tables.rb"
       end
