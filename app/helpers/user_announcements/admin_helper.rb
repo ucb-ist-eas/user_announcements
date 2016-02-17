@@ -41,9 +41,9 @@ module UserAnnouncements::AdminHelper
   
   def ua_datetime_p_bootstrap(f, method)
     value = f.object.send(method).try(:strftime, "%Y-%m-%d %H:%M")
-    %(<div class="date" style: "display:block !important">
+    %(<div class="datetime" style: "display:block !important">
         #{f.label(method, class: "control-label")}
-        <div class="input-group date">
+        <div class="input-group datetime">
           #{f.text_field(method, value: value, class: 'form-control')}
           <span class="input-group-addon">
             <i class="glyphicon glyphicon-th"></i>
