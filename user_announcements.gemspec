@@ -15,11 +15,12 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "CHANGELOG.md", "Rakefile", "README.md"]
 
   s.platform       = RUBY_PLATFORM =~ /java/ ? 'jruby' : 'ruby'
-  
+
   s.add_dependency "rails"
   s.add_dependency "jquery-rails"
   s.add_dependency 'momentjs-rails', '>= 2.9.0'
   s.add_dependency 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
+  s.add_dependency 'record_tag_helper', '~> 1.0'
 
   s.add_development_dependency 'sass-rails', '~> 5.0.4'
   s.add_development_dependency 'bootstrap-sass', '~> 3.3.5'
@@ -28,13 +29,13 @@ Gem::Specification.new do |s|
   s.add_development_dependency "generator_spec"
   s.add_development_dependency "capybara"
   s.add_development_dependency "capybara-webkit"
-  
+
   s.add_development_dependency "guard-rspec"
   s.add_development_dependency 'its'
   s.add_development_dependency 'coveralls'
   s.add_development_dependency 'shoulda-matchers'
   s.add_development_dependency 'database_cleaner'
-  
+
   if s.platform == 'java'
     s.add_development_dependency 'activerecord-jdbcsqlite3-adapter'
   else

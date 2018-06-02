@@ -16,9 +16,9 @@
   * unhide hidden announcements
 
 ### Acknowledgements
- 
+
 This gem was inspired by the [Site-Wide Announcements (revised)](http://railscasts.com/episodes/103-site-wide-announcements-revised)
-episode of [RailsCasts](http://railscasts.com/).  If you don't have a premium account you can see the 
+episode of [RailsCasts](http://railscasts.com/).  If you don't have a premium account you can see the
 [original episode](http://railscasts.com/episodes/103-site-wide-announcements).
 
 ## Assumptions
@@ -63,18 +63,18 @@ $ rake db:migrate
 ```ruby
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  
+
   private
-  
+
   def ensure_admin_user
     current_user.has_role?('admin')
   end
-  
+
   def current_user
     @user ||= User.find(session[:user_id])
   end
   helper_method :current_user
-  
+
 end
 ```
 
@@ -83,14 +83,14 @@ end
 
 ```ruby
 class User < ActiveRecord::Base
-  
+
   def has_role?(role)
     return true if role.blank?
     return true if role == admin && self.admin?
     # ... more elaborate role checking code here?
     false
   end
-  
+
 end
 ```
 
@@ -143,7 +143,7 @@ There are several configuration settings found in `../config/initializers/user_a
 UserAnnouncements.config do |config|
 
   using_bootstrap = true
-  
+
   if using_bootstrap
     config.bootstrap = true
     config.bootstrap_datetime_picker = true
@@ -167,8 +167,8 @@ UserAnnouncements.config do |config|
   # config.roles = []
   # config.roles = ['', 'admin']
   # config.roles = [ ['Public', ''], ['Administrator', 'admin'] ]
-  # config.roles = lambda { MyRoleClass.all.map { |role| [role.name, role.id] } }  
-  
+  # config.roles = lambda { MyRoleClass.all.map { |role| [role.name, role.id] } }
+
 end
 ```
 
@@ -177,7 +177,7 @@ Don't forget to restart your Rails server after changes to the config file.
 ### Stylesheets
 
 When the `user_announcements:install` command is run `app/assets/stylesheets/user_announcements.css`
-is created.  
+is created.
 
 When you change the CSS pay attention to the selectors -- some are for when you are configured
 with `config.bootstrap = true`; most are for when `config.bootstrap = false`.
