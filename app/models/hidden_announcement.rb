@@ -1,6 +1,5 @@
 class HiddenAnnouncement < ActiveRecord::Base
-  attr_accessible :user_id, :announcement_id
-  
+
   validates_presence_of :user_id, :announcement_id
   
   class << self
