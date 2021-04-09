@@ -15,25 +15,25 @@
   <%= ua_datetime_p(f, :starts_at) %>
 
   <%= ua_datetime_p(f, :ends_at) %>
-  
+
   <p>
     <%= ua_roles_html(f) %>
   </p>
-  
+
   <p>
     <%= ua_style_html(f) %>
   </p>
-  
+
   <div class="form-actions">
     <%= f.submit :class => 'btn btn-primary' %>
     <%= link_to("Cancel", admin_announcements_path, :class => 'btn') %>
   </div>
-  
+
 <% end %>
 
 <%- if ua_bootstrap_datetime_picker? %>
 <script>
-  
+
   $(function() {
     $('.ua-datetimepicker').datetimepicker({
     });
