@@ -66,4 +66,3 @@ class Admin::AnnouncementsController < ApplicationController
     )
   end
 end
-end
