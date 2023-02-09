@@ -32,8 +32,6 @@ class AnnouncementFinder
         .order('created_at desc')
     end
 
-    private
-
     # Returns current +Announcement+s
     #
     # @return [ActiveRecord::Relation<Announcement>]
@@ -43,6 +41,8 @@ class AnnouncementFinder
         .where("starts_at is null or starts_at >= :now", now: DateTime.now.utc)
         .where("ends_at is null or ends_at <= :now", now: DateTime.now.utc)
     end
+
+    private
 
     # Removes any +Announcement+s from _relation_ that _user_ has hidden.
     #
