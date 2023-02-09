@@ -1,8 +1,6 @@
 # Class to handle fetching +Announcement+ rows for various use cases.
 class AnnouncementFinder
-  
   class << self
-    
     # Returns all +Announcement+s for admin edit page.
     #
     # @return [ActiveRecord::Relation<Announcement>]
@@ -11,7 +9,7 @@ class AnnouncementFinder
         .all
         .sort_by(&:status_order)
     end
-    
+
     # Returns unhidden +Announcement+s that _user_ may see.
     #
     # @param user [User]
@@ -22,7 +20,7 @@ class AnnouncementFinder
       result = filter_by_role(user, result)
       result
     end
-    
+
     # Returns +Announcement+s that _user_ may edit.
     #
     # @param user [User]
@@ -30,20 +28,20 @@ class AnnouncementFinder
     def for_edit(user)
      Announcement
         .active
-        .where("(starts_at is null or starts_at < :now)", :now => DateTime.now)
+        .where("(starts_at is null or starts_at < :now)", :now => DateTime.now.utc)
         .order('created_at desc')
     end
-    
+
     private
-    
+
     # Returns current +Announcement+s
     #
     # @return [ActiveRecord::Relation<Announcement>]
     def current
       Announcement
         .active
-        .where("starts_at is null or starts_at < :now", now: DateTime.now)
-        .where("ends_at is null or ends_at > :now", now: DateTime.now)
+        .where("starts_at is null or starts_at >= :now", now: DateTime.now.utc)
+        .where("ends_at is null or ends_at <= :now", now: DateTime.now.utc)
     end
 
     # Removes any +Announcement+s from _relation_ that _user_ has hidden.
@@ -53,7 +51,7 @@ class AnnouncementFinder
     # @return [ActiveRecord::Relation<Announcement>]
     def remove_hidden(user, relation)
       hidden_announcement_ids = HiddenAnnouncement.hidden_announcement_ids_for(user.id)
-      
+
       if hidden_announcement_ids.present?
         relation.where("id not in (?)", hidden_announcement_ids)
       else
@@ -68,7 +66,7 @@ class AnnouncementFinder
     def filter_by_role(user, relation)
       relation.select { |announcement| user_can_see(user, announcement.roles) }
     end
-    
+
     # Returns +true+ if _user_ can see announcement based on _roles_.
     #
     # @param user [User, #has_role?]
@@ -81,7 +79,7 @@ class AnnouncementFinder
         roles.any? { |role| user.has_role?(role) }
       end
     end
-    
+
   end
-  
+
 end
