@@ -38,8 +38,8 @@ class AnnouncementFinder
     def current
       Announcement
         .active
-        .where("starts_at is null or starts_at >= :now", now: DateTime.now.utc)
-        .where("ends_at is null or ends_at <= :now", now: DateTime.now.utc)
+        .where("starts_at is null or starts_at <= :now", now: DateTime.now.utc)
+        .where("ends_at is null or ends_at >= :now", now: DateTime.now.utc)
     end
 
     private
