@@ -9,7 +9,7 @@ class AnnouncementFinder
     def for_admin
       Announcement
         .all
-        .sort_by(&:status_order)
+        .sort_by{|a| a.starts_at}.reverse
     end
     
     # Returns unhidden +Announcement+s that _user_ may see.
