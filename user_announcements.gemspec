@@ -9,14 +9,14 @@ Gem::Specification.new do |s|
   s.version     = UserAnnouncements::VERSION
   s.authors     = ["Steve Downey"]
   s.email       = ["steve.downtown@gmail.com"]
-  s.homepage    = "https://github.com/stevedowney/user_announcements"
+  s.homepage    = "https://github.com/ucb-ist-eas/user_announcements"
   s.summary     = "Manage and display site-wide announcements by user, scoped by user role."
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "CHANGELOG.md", "Rakefile", "README.md"]
 
   s.platform       = RUBY_PLATFORM =~ /java/ ? 'jruby' : 'ruby'
 
-  s.add_dependency "rails"
+  s.add_dependency "rails", "~> 6.1.0"
   s.add_dependency "jquery-rails"
   
 end
