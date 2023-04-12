@@ -2,7 +2,7 @@ module UserAnnouncements::MiscHelper
   
   def ua_datetime_display(datetime)
     if datetime.present?
-      datetime.to_s(:short)
+      datetime.strftime('%d %b %Y %H:%M')
     else
       nil
     end
