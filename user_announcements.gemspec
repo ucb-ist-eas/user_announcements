@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
 
   s.platform       = RUBY_PLATFORM =~ /java/ ? 'jruby' : 'ruby'
 
-  s.add_dependency "rails", "~> 6.1.0"
+  s.add_dependency "rails", "~> 7.0"
   s.add_dependency "jquery-rails"
   s.add_development_dependency "rspec-rails", "~> 5.0"
   s.add_development_dependency "spork"
