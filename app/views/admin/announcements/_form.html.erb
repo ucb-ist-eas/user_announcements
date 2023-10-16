@@ -1,42 +1,54 @@
-<%= form_for [:admin, @announcement], :html => {:class => 'announcement-detail'} do |f| %>
-  <%= _ua_active_model_errors(f.object) %>
+<div class="row">
+  <%= form_for [:admin, @announcement], html: {class: "announcement-detail col-md-6"} do |f| %>
+    <%= _ua_active_model_errors(f.object) %>
 
-  <p>
-    <%= f.check_box(:active) %>
-    <%= f.label :active %>
-  </p>
+    <p class="checkbox">
+      <label>
+        <%= f.check_box :active %>Active
+      </label>
+    </p>
 
-  <p>
-    <%= f.label(:message) %>
-    <%= ua_br %>
-    <%= f.text_area :message, size: "60x10", class: 'span6' %>
-  </p>
+    <p class="form-group">
+      <%= f.label :message %>
+      <%= f.text_area :message, size: "60x10", class: "form-control" %>
+    </p>
 
-  <%= ua_datetime_p(f, :starts_at) %>
+    <p class="form-group">
+      <%= f.label :starts_at %>
+      <%= f.datetime_local_field :starts_at, class: "form-control" %>
+    </p>
 
-  <%= ua_datetime_p(f, :ends_at) %>
+    <p class="form-group">
+      <%= f.label :ends_at %>
+      <%= f.datetime_local_field :ends_at, class: "form-control" %>
+    </p>
 
-  <p>
-    <%= ua_roles_html(f) %>
-  </p>
+    <%# ua_datetime_p(f, :starts_at) %>
 
-  <p>
-    <%= ua_style_html(f) %>
-  </p>
+    <%# ua_datetime_p(f, :ends_at) %>
 
-  <div class="form-actions">
-    <%= f.submit :class => 'btn btn-primary' %>
-    <%= link_to("Cancel", admin_announcements_path, :class => 'btn') %>
-  </div>
+    <p class="form-group">
+      <%= ua_roles_html(f) %>
+    </p>
 
-<% end %>
+    <p class="form-group">
+      <%= ua_style_html(f) %>
+    </p>
 
-<%- if ua_bootstrap_datetime_picker? %>
-<script>
+    <div class="form-actions">
+      <%= f.submit "Save", class: "btn btn-primary" %>
+      <%= link_to "Cancel", admin_announcements_path  %>
+    </div>
 
-  $(function() {
-    $('.ua-datetimepicker').datetimepicker({
-    });
-  })
-</script>
-<% end %>
+  <% end %>
+
+  <%- if ua_bootstrap_datetime_picker? %>
+  <script>
+
+    $(function() {
+      $('.ua-datetimepicker').datetimepicker({
+      });
+    })
+  </script>
+  <% end %>
+</div>

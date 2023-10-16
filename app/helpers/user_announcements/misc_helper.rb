@@ -1,5 +1,5 @@
 module UserAnnouncements::MiscHelper
-  
+
   def ua_datetime_display(datetime)
     if datetime.present?
       datetime.strftime('%d %b %Y %H:%M')
@@ -7,12 +7,12 @@ module UserAnnouncements::MiscHelper
       nil
     end
   end
-  
+
   # Return a <br> tag if not bootstrap
   def ua_br
     "<br />".html_safe unless ua_bootstrap?
   end
-  
+
   def ua_flash_messagesages
     return nil if flash.empty?
     result = []
@@ -27,7 +27,7 @@ module UserAnnouncements::MiscHelper
       content_tag(:a, 'x', :class => "close", "data-dismiss" => "alert") + msg.html_safe
     end
   end
-  
+
   def ua_bootstrap?
     if params.has_key?(:bootstrap)
       params[:bootstrap] == 'true'
@@ -35,10 +35,10 @@ module UserAnnouncements::MiscHelper
       UserAnnouncements[:bootstrap]
     end
   end
-  
+
   def ua_bootstrap_datetime_picker?
     return false unless ua_bootstrap?
-    return true if params[:bootstrap] == 'true'    
+    return true if params[:bootstrap] == 'true'
     UserAnnouncements[:bootstrap_datetime_picker]
   end
 end
