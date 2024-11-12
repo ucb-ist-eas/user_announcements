@@ -1,6 +1,6 @@
 class Announcement < ActiveRecord::Base
-  serialize :roles, Array
-  serialize :types, Array
+  serialize :roles, type: Array
+  serialize :types, type: Array
   
 
   has_many :hidden_announcements, :dependent => :destroy
